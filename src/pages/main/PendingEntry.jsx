@@ -4,7 +4,7 @@ import { Column } from 'primereact/column';
 
 import AllData from '../../utils/data/entries.json'
 
-export default function AllEntry() {
+export default function PendingEntry() {
     const [entries, setEntries] = useState([]);
 
     const [selectedEntries, setSelectedEntries] = useState(null);
@@ -22,13 +22,14 @@ export default function AllEntry() {
     const getData = (Details) => {
         const allData = Details.map((data, index) => ({
             ...data,
-            id: index + 1
+            id: index + 1 
         }));
+        const approvedEntries = allData.filter(entry => entry.status === 'Pending');
 
-        setEntries(allData);
+        setEntries(approvedEntries);
     };
 
-
+    
     useEffect(() => {
         getData(AllData)
     }, []);
@@ -45,10 +46,10 @@ export default function AllEntry() {
     return (
         <div className='p-10'>
 
-            <div className="mb-10 flex items-center justify-between">
+<div className="mb-10 flex items-center justify-between">
                 <div className="">
-                    <span className="font-bold">My Data Entry</span>
-                    <span className='text-xs ml-5 px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>All Entries</span>
+                    <span className="font-bold">Pending Entry</span>
+                    <span className='text-xs ml-5 px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>Pending</span>
                 </div>
                 <div className="flex items-center">
                     <p>Filters</p>
@@ -73,7 +74,7 @@ export default function AllEntry() {
                         paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport"
 
                         // stripedRows
-                        sortMode="multiple"
+                        // sortMode="multiple"
                         tableStyle={{ minWidth: '30rem' }}
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>

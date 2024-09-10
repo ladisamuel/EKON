@@ -3,9 +3,12 @@ import LogoImg from '../../assets/Logo.png'
 import { loginuserValidation } from '../../utils/validation/Validation';
 // import { InputText } from "primereact/inputtext";
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
 
     const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate()
 
     const onSubmit = async (values) => {
         setLoading(true);
@@ -91,7 +94,7 @@ export default function Login() {
 
                             </div>
                             <div>
-                                <input type="submit" value="Login" className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block' />
+                                <input type="submit" onClick={()=>navigate('/dashboard')} value="Login" className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block' />
                             </div>
 
 

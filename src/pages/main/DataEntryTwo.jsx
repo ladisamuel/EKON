@@ -1,7 +1,9 @@
 import React from 'react'
 import globe from '../../assets/globe.png'
 import NewEntryImage from '../../components/NewEntryImage'
+import { useNavigate } from 'react-router-dom'
 export default function DataEntryTwo() {
+    const navigate = useNavigate()
     return (
         <>
             <div className="w-[100%] grid grid-cols-[2.5fr,2fr] gap-10 p-10">
@@ -80,8 +82,9 @@ export default function DataEntryTwo() {
                         </div>
 
 
-                        <div className="">
-                            <input type="submit" className='w-full bg-[blue] text-white border rounded-lg py-2 px-3' value="Next" placeholder="Social media " />
+                        <div className="flex gap-1">
+                            <input type="submit" className='w-full bg-white text-[#383838] border border-[#383838] rounded-lg py-1 px-3 cursor-pointer' value="Previous" onClick={()=>navigate('/addNew1')} />
+                            <input type="submit" className='w-full bg-[#4A3AFF] text-white border rounded-lg py-1 px-3 cursor-pointer' value="Submit"  />
                         </div>
 
 

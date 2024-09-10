@@ -4,7 +4,7 @@ import { Column } from 'primereact/column';
 
 import AllData from '../../utils/data/entries.json'
 
-export default function AllEntry() {
+export default function ApprovedEntry() {
     const [entries, setEntries] = useState([]);
 
     const [selectedEntries, setSelectedEntries] = useState(null);
@@ -24,8 +24,9 @@ export default function AllEntry() {
             ...data,
             id: index + 1
         }));
+        const approvedEntries = allData.filter(entry => entry.status === 'Approved');
 
-        setEntries(allData);
+        setEntries(approvedEntries);
     };
 
 
@@ -47,8 +48,8 @@ export default function AllEntry() {
 
             <div className="mb-10 flex items-center justify-between">
                 <div className="">
-                    <span className="font-bold">My Data Entry</span>
-                    <span className='text-xs ml-5 px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>All Entries</span>
+                    <span className="font-bold">Approved Entry</span>
+                    <span className='text-xs ml-5 px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>Approved</span>
                 </div>
                 <div className="flex items-center">
                     <p>Filters</p>
@@ -73,7 +74,7 @@ export default function AllEntry() {
                         paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport"
 
                         // stripedRows
-                        sortMode="multiple"
+                        // sortMode="multiple"
                         tableStyle={{ minWidth: '30rem' }}
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>

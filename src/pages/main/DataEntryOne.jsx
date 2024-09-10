@@ -1,7 +1,9 @@
 import React from 'react'
 import NewEntryImage from '../../components/NewEntryImage'
+import { useNavigate } from 'react-router-dom'
 export default function DataEntryOne() {
-  return (
+    const navigate = useNavigate()
+    return (
     <>
     <div className="w-[100%] grid grid-cols-[2.5fr,2fr] gap-10 p-10">
         {/* left */}
@@ -44,7 +46,7 @@ export default function DataEntryOne() {
                 </div>
 
                 <div className="">
-                    <input type="submit" className='w-full bg-[blue] text-white border rounded-lg text-xs py-2 px-3' value="Next" placeholder="Social media " />
+                    <input type="submit" onClick={()=>navigate('/addNew2')} className='w-full bg-[blue] text-white border rounded-lg text-xs py-2 px-3 cursor-pointer' value="Next" placeholder="Social media " />
                 </div>
                 
 

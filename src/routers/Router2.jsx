@@ -7,6 +7,8 @@ import DataEntryOne from "../pages/main/DataEntryOne";
 import Main from "../pages/main/Main";
 import DataEntryTwo from "../pages/main/DataEntryTwo";
 import AllEntry from "../pages/main/AllEntry";
+import ApprovedEntry from "../pages/main/ApprovedEntry";
+import PendingEntry from "../pages/main/pendingEntry";
 
 export default function Router2() {
 
@@ -16,10 +18,12 @@ export default function Router2() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/" element={<Main />} >
-            <Route path="dashboard" element={<DashBoard />} />
-            <Route path="addNew1" element={<DataEntryOne />} />
-            <Route path="addNew2" element={<DataEntryTwo />} />
-            <Route path="entries/allEntries" element={<AllEntry />} />
+            <Route path="Dashboard" element={<DashBoard />} />
+            <Route path="AddNewOne" element={<DataEntryOne />} />
+            <Route path="AddNewTwo" element={<DataEntryTwo />} />
+            <Route path="Entries/AllEntries" element={<AllEntry />} />
+            <Route path="Entries/ApprovedEntries" element={<ApprovedEntry />} />
+            <Route path="Entries/PendingEntries" element={<PendingEntry />} />
           </Route>
 
 

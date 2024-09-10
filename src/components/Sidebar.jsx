@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProfileIcon from '../assets/icons/ByeWind.png'
 import ChartPieSlice from '../assets/icons/ChartPieSlice.png'
 import fileicon from '../assets/icons/fileicon.png'
@@ -12,8 +12,12 @@ import { useNavigate } from 'react-router-dom'
 import Logo2 from '../assets/Logo2.png'
 
 export default function Sidebar() {
-
+const [entryStatus, setEntryStatus] = useState(false)
     const navigate = useNavigate()
+
+    const toggleEntryStatus = () =>{
+        setEntryStatus(!entryStatus)
+    }
 
     const menuList = [
         {
@@ -61,9 +65,17 @@ export default function Sidebar() {
                             <p className='py-1'>Overview</p>
                         </div>
 
-                        <div onClick={() => navigate('/addNew1')} className='hover:cursor-pointer hover:bg-[#F4F4F4] hover:border-l-4 border-black pl-3 rounded-r flex gap-1 items-center justify-start'>
+                        <div onClick={toggleEntryStatus} className=''>
+                            <div className="hover:cursor-pointer hover:bg-[#F4F4F4] hover:border-l-4 border-black pl-3 rounded-r flex gap-1 items-center justify-start">
                             <i className="pi pi-folder text-center w-[20px] text-md"></i>
                             <p className='py-1'>Data Entry</p>
+                            </div>
+                            <ul className={`${entryStatus? 'block': 'hidden'} pl-10 flex flex-col gap-3 mt-2 `}>
+                                <li className='cursor-pointer' onClick={()=>navigate('/Entries/AllEntries')}>All Entries</li>
+                                <li className='cursor-pointer' onClick={()=>navigate('/Entries/ApprovedEntries')}>Approved</li>
+                                <li className='cursor-pointer' onClick={()=>navigate('/Entries/PendingEntries')}>Pending</li>
+                                <li className='cursor-pointer' onClick={()=>navigate('/AddNewOne')}>Add New</li>
+                            </ul>
                         </div>
 
                     </div>

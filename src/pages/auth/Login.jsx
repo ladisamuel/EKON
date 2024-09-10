@@ -35,7 +35,7 @@ export default function Login() {
             {/* general div */}
             <div className='relative w-[100%] p-10 grid grid-col-1 h-[100vh] lg:flex'>
                 {/* left */}
-                <div className='relative lg:w-[60%] lg:h-[90vh] rounded-3xl bg-gradient-to-b from-[#0070FF] to-[#021B79] flex justify-center items-center overflow-hidden'>
+                <div className='hidden relative lg:w-[60%] lg:h-[90vh] rounded-3xl bg-gradient-to-b from-[#0070FF] to-[#021B79] lg:flex justify-center items-center overflow-hidden'>
 
                     <div className="absolute w-[638px] h-[638px] border border-[#4A3AFF] rounded-full -z-0 -bottom-40 left-32 translate-y-1/2 -translate-x-1/2 ">
                     </div>
@@ -63,7 +63,7 @@ export default function Login() {
                         <p className='font-bold text-2xl mb-2'>Hello Again!</p>
                         <p className='mb-12 font-semibold'>Welcome Back</p>
 
-                        <form action="" >
+                        <div action="" >
 
                             {/* <div className="flex border justify-start items-center h-[60px] gap-4 bg-white rounded-lg p-2 px-4">
                                 <i className="pi pi-envelope p-3 bg-orange-50"></i>
@@ -94,7 +94,8 @@ export default function Login() {
 
                             </div>
                             <div>
-                                <input type="submit" onClick={()=>navigate('/dashboard')} value="Login" className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block' />
+                                {/* <input type="submit" onClick={()=>navigate('/dashboard')} value="Login" className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block' /> */}
+                                <div onClick={()=>navigate('/dashboard')} className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block cursor-pointer' >Login</div>
                             </div>
 
 
@@ -104,7 +105,7 @@ export default function Login() {
                             </div>
 
 
-                        </form>
+                        </div>
 
                     </div>
 

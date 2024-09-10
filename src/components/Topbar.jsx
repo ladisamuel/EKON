@@ -15,8 +15,8 @@ export default function Topbar() {
         const currentPath = window.location.pathname;
         const pathSegments = currentPath.split('/').filter(Boolean);
 
-        console.log(pathSegments);
-        console.log(currentPath.toUpperCase());
+        // console.log(pathSegments);
+        // console.log(currentPath.toUpperCase());
 
         const formatSegment = (segment) => {
             return segment.replace(/([A-Z])/g, ' $1').trim();
@@ -26,7 +26,7 @@ export default function Topbar() {
 
     }
 
-    console.log(breadcrumbs());
+    // console.log(breadcrumbs());
     useEffect(()=>{
         setPath(breadcrumbs());
     })
@@ -42,7 +42,7 @@ export default function Topbar() {
 
                     </div>
                     <div className="flex items-center gap-1">
-                        <p className='text-[gray]'>Dashboards / {path}</p>
+                        <p className='text-[gray]'>Dashboards / {path==="dashboard"?path:''}</p>
                         {/* <p className='text-[gray] font-bold'></p> */}
                         <p className='fontbold text-gray-00 text-sm'></p>
                     </div>

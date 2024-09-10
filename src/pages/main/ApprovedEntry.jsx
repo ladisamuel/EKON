@@ -3,6 +3,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 
 import AllData from '../../utils/data/entries.json'
+import { useNavigate } from 'react-router-dom';
 
 export default function ApprovedEntry() {
     const [entries, setEntries] = useState([]);
@@ -10,6 +11,7 @@ export default function ApprovedEntry() {
     const [selectedEntries, setSelectedEntries] = useState(null);
     const [rowClick, setRowClick] = useState(true);
 
+    const navigate = useNavigate()
 
     const columns = [
         { field: 'user', header: 'User' },
@@ -53,7 +55,7 @@ export default function ApprovedEntry() {
                 </div>
                 <div className="flex items-center">
                     <p>Filters</p>
-                    <div className='flex items-center gap-3 text-xs ml-5 px-2 py-2 bg-[#4A3AFF] rounded-lg text-white'>
+                    <div onClick={()=>navigate('/AddNewOne')} className='flex items-center gap-3 text-xs ml-5 px-2 py-2 bg-[#4A3AFF] rounded-lg text-white cursor-pointer'>
                         <i className='pi pi-plus'></i>
                         <p className=''>Add New Entry</p>
                     </div>

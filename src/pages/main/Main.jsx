@@ -15,7 +15,7 @@ export default function Main() {
                     <div className=" fixed w-[calc(100%-200px)]  z-50">
                         <Topbar />
                     </div>
-                    <div className="mt-[10vh]">
+                    <div className="mt-[8vh]">
                         <Outlet />
                     </div>
                 </div>

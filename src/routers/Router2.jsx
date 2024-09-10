@@ -8,7 +8,7 @@ import Main from "../pages/main/Main";
 import DataEntryTwo from "../pages/main/DataEntryTwo";
 import AllEntry from "../pages/main/AllEntry";
 import ApprovedEntry from "../pages/main/ApprovedEntry";
-import PendingEntry from "../pages/main/pendingEntry";
+import PendingEntry from "../pages/main/PendingEntry";
 import DashboardHome from "../pages/staff/DashboardHome";
 
 export default function Router2() {

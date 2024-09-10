@@ -28,6 +28,8 @@ export default function Login() {
             validationSchema: loginuserValidation,
             onSubmit,
         });
+        // console.log('');
+        
 
 
     return (
@@ -97,8 +99,6 @@ export default function Login() {
                                 {/* <input type="submit" onClick={()=>navigate('/dashboard')} value="Login" className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block' /> */}
                                 <div onClick={()=>navigate('/dashboard')} className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block cursor-pointer' >Login</div>
                             </div>
-
-
                             <div className='text-center my-3 text-xs font-bold'>
                                 <a href="#">Forgot Password</a>
 

@@ -1,0 +1,26 @@
+[
+    {
+        "heading": "Total Data Entry",
+        "value" : "720k",
+        "rate" : "11.01%",
+        "bgc" : "bg-[#E3F5FF]"
+    },
+    {
+        "heading": "Total Visits",
+        "value" : "367k",
+        "rate" : "0.03%",
+        "bgc" : "bg-[#E5ECF6]"
+    },
+    {
+        "heading": "Total Users",
+        "value" : "1,156",
+        "rate" : "15.03%",
+        "bgc" : "bg-[#E3F5FF]"
+    },
+    {
+        "heading": "Total Admins",
+        "value" : "239K",
+        "rate" : "6.08%",
+        "bgc" : "bg-[#E5ECF6]"
+    }
+]

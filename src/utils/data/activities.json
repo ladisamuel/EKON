@@ -1,0 +1,27 @@
+[
+    {
+        "info": "Data entry needs approval",
+        "time": "Just now",
+        "icon": "./src/assets/icons/activities/3D05.png"
+    },
+    {
+        "info": "Data entry needs approval",
+        "time": "59 minutes ago",
+        "icon": "/src/assets/icons/activities/3D08.png"
+    },
+    {
+        "info": "Submitted an entry",
+        "time": "12 hours ago",
+        "icon": "./src/assets/icons/activities/Female05.png"
+    },
+    {
+        "info": "Request",
+        "time": "Today, 11:59 AM",
+        "icon": "./src/assets/icons/activities/IconSet.png"
+    },
+    {
+        "info": "Request",
+        "time": "Feb 2,2023",
+        "icon": "./src/assets/icons/activities/Male11.png"
+    }
+]

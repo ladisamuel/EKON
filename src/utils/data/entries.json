@@ -1,0 +1,58 @@
+[
+    {
+        "user": "James Chan",
+        "church": "The latter House",
+        "founder": "Sergie Klauss",
+        "denomination": "Catholic",
+        "denominations": "Catholic",
+        "status": "Approved"
+    },
+    {
+        "user": "Emmanuel Jill",
+        "church": "First Assembly",
+        "founder": "Peter Paul",
+        "denomination": "Catholic",
+        "denominations": "Catholic",
+        "status": "Approved"
+    },
+    {
+        "user": "Okoye Ifeanyi",
+        "church": "The Future",
+        "founder": "Jackson Cleave",
+        "denomination": "Pentecostal",
+        "denominations": "Pentecostal",
+        "status": "Pending"
+    },
+    {
+        "user": "Okoye Ifeanyi",
+        "church": "End Time Ministries",
+        "founder": "Matthew Price",
+        "denomination": "Pentecostal",
+        "denominations": "Pentecostal",
+        "status": "Pending"
+    },
+    {
+        "user": "Prosper Ikene",
+        "church": "Assemblies of Brethren",
+        "founder": "Andrew Hun",
+        "denomination": "Pentecostal",
+        "denominations": "Pentecostal",
+        "status": "Pending"
+    },
+    {
+        "user": "Prosper Ikene",
+        "church": "God's Assembly",
+        "founder": "Carter Limms",
+        "denomination": "Baptist",
+        "denominations": "Pentecostal",
+        "status": "Pending"
+    },
+    {
+        "user": "Okoye Ifeanyi",
+        "church": "Church of Latter House",
+        "founder": "Richard Lone",
+        "denomination": "Pentecostal",
+        "denominations": "Pentecostal",
+        "status": "Pending"
+    }
+]

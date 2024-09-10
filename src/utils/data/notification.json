@@ -1,0 +1,22 @@
+[
+    {
+        "info" : "Data entry needs approval",
+        "time" : "Just now",
+        "icon": "./src/assets/icons/notification/bugicon.png"
+    },
+    {
+        "info" : "New user registered",
+        "time" : "59 minutes ago",
+        "icon": "./src/assets/icons/notification/NewUser.png"
+    },
+    {
+        "info" : "You have a bug that needs",
+        "time" : "12 hours ago",
+        "icon": "./src/assets/icons/notification/bugicon.png"
+    },
+    {
+        "info" : "Andi Lane subscribed to you",
+        "time" : "Today,11:59 AM",
+        "icon": "./src/assets/icons/notification/IconSet.png"
+    }
+]

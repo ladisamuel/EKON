@@ -9,6 +9,7 @@ import DataEntryTwo from "../pages/main/DataEntryTwo";
 import AllEntry from "../pages/main/AllEntry";
 import ApprovedEntry from "../pages/main/ApprovedEntry";
 import PendingEntry from "../pages/main/pendingEntry";
+import DashboardHome from "../pages/staff/DashboardHome";
 
 export default function Router2() {
 
@@ -24,6 +25,16 @@ export default function Router2() {
             <Route path="Entries/AllEntries" element={<AllEntry />} />
             <Route path="Entries/ApprovedEntries" element={<ApprovedEntry />} />
             <Route path="Entries/PendingEntries" element={<PendingEntry />} />
+            
+          </Route>
+          <Route path="/staff" element={<Main />} >
+            <Route path="Dashboard" element={<DashboardHome />} />
+            <Route path="AddNewOne" element={<DataEntryOne />} />
+            <Route path="AddNewTwo" element={<DataEntryTwo />} />
+            <Route path="Entries/AllEntries" element={<AllEntry />} />
+            <Route path="Entries/ApprovedEntries" element={<ApprovedEntry />} />
+            <Route path="Entries/PendingEntries" element={<PendingEntry />} />
+            
           </Route>
 
 

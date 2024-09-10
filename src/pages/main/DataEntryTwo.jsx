@@ -83,7 +83,7 @@ export default function DataEntryTwo() {
 
 
                         <div className="flex gap-1">
-                            <input type="submit" className='w-full bg-white text-[#383838] border border-[#383838] rounded-lg py-1 px-3 cursor-pointer' value="Previous" onClick={()=>navigate('/addNew1')} />
+                            <input type="submit" className='w-full bg-white text-[#383838] border border-[#383838] rounded-lg py-1 px-3 cursor-pointer' value="Previous" onClick={()=>navigate('/AddNewOne')} />
                             <input type="submit" className='w-full bg-[#4A3AFF] text-white border rounded-lg py-1 px-3 cursor-pointer' value="Submit"  />
                         </div>
 

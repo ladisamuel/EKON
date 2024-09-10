@@ -68,7 +68,7 @@ export default function AllEntry() {
                         selection={selectedEntries}
                         onSelectionChange={(e) => setSelectedEntries(e.value)}
                         dataKey="id"
-                        paginator
+                        paginato
                         rows={30}
                         paginatorTemplate="RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport"
 

@@ -46,7 +46,7 @@ export default function DataEntryOne() {
                 </div>
 
                 <div className="">
-                    <input type="submit" onClick={()=>navigate('/addNew2')} className='w-full bg-[blue] text-white border rounded-lg text-xs py-2 px-3 cursor-pointer' value="Next" placeholder="Social media " />
+                    <input type="submit" onClick={()=>navigate('/AddNewTwo')} className='w-full bg-[blue] text-white border rounded-lg text-xs py-2 px-3 cursor-pointer' value="Next" placeholder="Social media " />
                 </div>
                 
 

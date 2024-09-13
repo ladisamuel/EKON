@@ -43,11 +43,11 @@ const [entryStatus, setEntryStatus] = useState(false)
     ]
     return (
 
-        <div className='border-r fixed w-[200px] h-[100vh] p-5'>
+        <div className='border-r  lg:fixed lg:w-[200px] lg:h-[100vh] p-5'>
             <div className='relative h-full'>
 
 
-                <div className='flex items-center gap-1 mb-10'>
+                <div className='hidden lg:flex items-center gap-1 mb-10'>
                     <img src={ProfileIcon} alt="img" />
                     <p className='font-bold text-xs'>Prosper</p>
                 </div>
@@ -91,7 +91,7 @@ const [entryStatus, setEntryStatus] = useState(false)
                         ))
                     }
                 </div>
-                <div className="absolute bottom-10">
+                <div className="hidden lg:absolute bottom-10">
                     <img src={Logo2} className="" alt="" />
                 </div>
             </div>

@@ -5,9 +5,9 @@ export default function DataEntryOne() {
     const navigate = useNavigate()
     return (
     <>
-    <div className="w-[100%] grid grid-cols-[2.5fr,2fr] gap-10 p-10">
+    <div className="w-[100%] grid grid-rows-2 lg:grid-cols-[2.5fr,2fr] gap-10 p-10">
         {/* left */}
-        <div className="">
+        <div className="order-2 lg:order-1 mb-5">
             <p className="text-xl font-bold">New Data Entry</p>
             <p className="text-sm text-gray-400">The Embassy Of The Kingdom Of Heaven (EKOH)</p>
 

@@ -38,12 +38,12 @@ export default function DashBoard() {
 
     return (
         <div className='flex'>
-            <div className='borderl-2 px-3 lg:w-[80%]'>
+            <div className=' px-3 w-[100%] lg:w-[80%]'>
                 <p className='font-semibold my-5'>Today </p>
-                <div className='flex justify-between mb-5 gap-4 w-full'>
+                <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 justify-between mb-5 w-full'>
                     {StatisticData.map((data, index) => (
 
-                        <div key={index} className={`bg-[#E3F5FF] p-3 rounded-lg w-[30%]`} >
+                        <div key={index} className={`bg-[#E3F5FF] p-3 rounded-lg bg-red-30 `} >
                             <p className='font-bold text-xs'>{data.heading}</p>
                             <div className='flex justify-between gap-3 mt-2'>
                                 <p className='font-bold text-xl'>{data.value}</p>
@@ -62,14 +62,14 @@ export default function DashBoard() {
 
                 </div>
 
-                <div className='w-[100%] flex gap-3 my-5 '>
-                    <div className='bg-[#F7F9FB] rounded-lg w-[50%] p-2 '>
+                <div className='w-[100%] lg:flex gap-3 my-5 '>
+                    <div className='bg-[#F7F9FB] rounded-lg  lg:w-[50%] p-2 '>
                         <p className='font-bold text-xs pl-2 pt-2'>Traffic by device</p>
                         <div className="h-[25vh]">
                             <Bar />
                         </div>
                     </div>
-                    <div className='bg-[#F7F9FB] rounded-lg w-[50%] p-2 '>
+                    <div className='bg-[#F7F9FB] rounded-lg lg:w-[50%] p-2 '>
                         <p className='font-bold text-xs pl-2 pt-2'>Traffic by device</p>
                         <div className="h-[25vh] grid grid-cols-2">
                             <Donut />
@@ -93,7 +93,7 @@ export default function DashBoard() {
                 </div>
             </div>
 
-            <div className='lg:w-[20%] border-l p-3'>
+            <div className=' hidden lg:block lg:w-[20%] border-l p-3'>
                 <p className='py-3 font-semibold'>Notifications</p>
                 <div className=''>
                     {

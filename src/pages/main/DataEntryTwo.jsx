@@ -6,9 +6,9 @@ export default function DataEntryTwo() {
     const navigate = useNavigate()
     return (
         <>
-            <div className="w-[100%] grid grid-cols-[2.5fr,2fr] gap-10 p-10">
+            <div className="w-[100%] grid grid-rows-2 lg:grid-cols-[2.5fr,2fr] gap-10 p-10">
                 {/* phase1 */}
-                <div className="">
+                <div className="order-2 lg:order-1 mb-5">
                     <p className="text-xl font-bold">New Data Entry</p>
                     <p className="text-sm text-gray-400">The Embassy Of The Kingdom Of Heaven (EKOH)</p>
 

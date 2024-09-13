@@ -6,6 +6,7 @@ import fileicon from '../assets/icons/fileicon.png'
 import search from '../assets/icons/Search.png'
 import text from '../assets/icons/Text.png'
 import star from '../assets/icons/star.png'
+import LogoBlk from '../assets/Logo2.png'
 
 export default function Topbar() {
 
@@ -32,9 +33,12 @@ export default function Topbar() {
     })
     
     return (
-        <div className=" bg-white">
-            <div className="flex justify-between items-center px-5 border-b">
-                <div className='flex gap-2 py-4'>
+        <div className="h-[10vh]  w-full bg-white">
+            <div className="h-full  flex justify-between items-center px-5 ">
+                <div className="lg:hidden">
+                    <img src={LogoBlk} alt="" /> 
+                </div>
+                <div className='hidden lg:flex gap-2 py-4'>
                     {/* icons */}
                     <div className='flex gap-2'>
                         <img src={fileicon} className='w-6 h-6' alt="" />
@@ -48,7 +52,7 @@ export default function Topbar() {
                     </div>
                 </div>
 
-                <div className='flex justify-end items-center gap-5 '>
+                <div className='hidden lg:flex justify-end items-center gap-5 '>
 
                     <div className='relative'>
                         <i className='pi pi-search text-sm absolute -translate-y-1/2 pl-2 top-[50%] left[10px] text-gray-300 '></i>

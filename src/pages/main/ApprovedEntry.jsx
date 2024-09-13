@@ -48,14 +48,14 @@ export default function ApprovedEntry() {
     return (
         <div className='p-10'>
 
-            <div className="mb-10 flex items-center justify-between">
-                <div className="">
-                    <span className="font-bold">Approved Entry</span>
-                    <span className='text-xs ml-5 px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>Approved</span>
+            <div className="mb-10 flex lg:flex-row items-start justify-between gap-5">
+                <div className="lg:flex">
+                    <p className="font-bold">My Data Entry</p>
+                    <p className='text-xs lg:ml-5 w-fit px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>Approved</p>
                 </div>
-                <div className="flex items-center">
-                    <p>Filters</p>
-                    <div onClick={()=>navigate('/AddNewOne')} className='flex items-center gap-3 text-xs ml-5 px-2 py-2 bg-[#4A3AFF] rounded-lg text-white cursor-pointer'>
+                <div className="flex flex-col-reverse lg:flex-row items-center">
+                    <p className='mx-5'>Filters</p>
+                    <div onClick={() => navigate('/AddNewOne')} className='flex items-center gap-3 text-xs px-2 py-2 bg-[#4A3AFF] rounded-lg text-white cursor-pointer'>
                         <i className='pi pi-plus'></i>
                         <p className=''>Add New Entry</p>
                     </div>

@@ -3,7 +3,7 @@ import globe from '../assets/globe.png'
 
 export default function NewEntryImage() {
     return (
-        <div>
+        <div className='order-1 '>
             <div className="relative bg-[#0B0914] rounded-3xl overflow-hidden text-white p-10 h-[500px] max-w-[400px] ">
                 <div className="">
                     <p className='text-sm'>Create a</p>

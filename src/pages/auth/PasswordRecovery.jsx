@@ -1,20 +1,13 @@
 import React, { useState } from "react";
 import LogoImg from "../../assets/Logo.png";
-import { loginuserValidation } from "../../utils/validation/Validation";
+import { recoverpassword } from "../../utils/validation/Validation";
 // import { InputText } from "primereact/inputtext";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
-import { loginUser } from "../../utils/api/api";
-import { toast } from "react-toastify";
-import { authState } from "../../utils/atoms/authAtom";
-import { useRecoilState } from "recoil";
-import { userState } from "../../utils/atoms/userAtom";
-export default function Login() {
+import { Password } from "primereact/password";
+export default function PasswordRecovery() {
   const [loading, setLoading] = useState(false);
-
-  const [auth, setAuth] = useRecoilState(authState);
-  const [user, setUser] = useRecoilState(userState);
 
   const navigate = useNavigate();
 
@@ -22,23 +15,20 @@ export default function Login() {
     setLoading(true);
 
     const data = {
-      email: values.email,
-      password: values.password
+      password: values.password,
+      password2: values.password2,
     };
     console.log(data);
 
     await loginUser(data)
       .then((res) => {
-          console.log(res);
-          console.log(res.data);
-          console.log(res.data.payload);
-          console.log(res.data.payload.token);    
-
-          setAuth(res.data.payload);
-          setUser(res.data.payload);
-          navigate('/Dashboard')
-          toast.success(" Login successful");
-        })
+        setAuth(res.data);
+        setUser(res.data.user);
+        toast.success(" Login successful");
+        console.log(res);
+        setLoading(false);
+        console.log(res);
+      })
       .catch((err) => {
         // console.log(err);
 
@@ -50,8 +40,8 @@ export default function Login() {
   };
 
   const initialValues = {
-    email: "",
     password: "",
+    password2: "",
   };
 
   const {
@@ -65,7 +55,7 @@ export default function Login() {
   } = useFormik({
     validateOnMount: true,
     initialValues: initialValues,
-    validationSchema: loginuserValidation,
+    validationSchema: recoverpassword,
     onSubmit,
   });
   // console.log('');
@@ -97,58 +87,19 @@ export default function Login() {
         <div className=" lg:w-[40%] flex justify-center place-items-center">
           <div className=" ">
             <p className="font-bold text-2xl mb-2">Hello Again!</p>
-            <p className="mb-12 font-semibold">Welcome Back</p>
-
+            <p className="mb-12 font-semibold">Change your password here</p>
             <form onSubmit={handleSubmit} action="">
-              {/* <div className="flex border justify-start items-center h-[60px] gap-4 bg-white rounded-lg p-2 px-4">
-                                <i className="pi pi-envelope p-3 bg-orange-50"></i>
-                                <span className="p-float-lbel w-full">
-                                    <InputText 
-                                        id="user"
-                                        name="user"
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        size={""}
-                                    />
-                                    <label htmlFor="user">Email address</label>
-                                </span>
-                            </div>
-                            {errors.user && touched.user && (
-                                <p className="error">{errors.user}</p>
-                            )} */}
 
 
               <div className="">
-                <div className="relative flex items-center h-[60px] my-2 gap-4 bg-white rounded ">
-                  <i className="absolute top-1/2 left-1 -translate-y-1/2 z-50 pi pi-envelope p-3 bg-blue50"></i>
+                <div className="flex items-center h-[60px] my-2 gap-4 bg-white rounded-lg p-">
                   <span className="p-float-label w-full">
                     <InputText
-                      className="w-full pl-12 p-3 rounded shadow !bg-white"
-                      id="email"
-                      name="email"
-                      placeholder="Enter Email Address"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </span>
-                </div>
-                {errors.email && touched.email && (
-                  <p className="error text-sm text-red-400">{errors.email}</p>
-                )}
-              </div>
-
-
-              <div className="">
-                <div className="relative flex items-center h-[60px] my-2 gap-4 bg-white rounded-lg p-">
-                  <i className="absolute top-1/2 left-1 -translate-y-1/2 z-50 pi pi-lock p-3 bg-blue50"></i>
-                  <span className="p-float-label w-full">
-                    <InputText
-                      className="w-full pl-12 p-3 rounded shadow !bg-white"
+                      className="w-full p-3 rounded-lg shadow !bg-white"
                       id="password"
                       type="password"
                       name="password"
-                      placeholder="Enter Password"
+                      placeholder="Password"
                       value={values.password}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -156,26 +107,56 @@ export default function Login() {
                   </span>
                 </div>
                 {errors.password && touched.password && (
-                  <p className="error text-sm text-red-400">{errors.password}</p>
+                  <p className="error text-sm text-red-400">
+                    {errors.password}
+                  </p>
                 )}
               </div>
-
+              <div className="">
+                <div className="flex items-center h-[60px] my-2 gap-4 bg-white rounded-lg p-">
+                  <span className="p-float-label w-full">
+                    <InputText
+                      className="w-full p-3 rounded-lg shadow !bg-white"
+                      id="password2"
+                      type="password"
+                      name="password2"
+                      placeholder="Confirm Password"
+                      value={values.password2}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </span>
+                </div>
+                {errors.password2 && touched.password2 && (
+                  <p className="error text-sm text-red-400">
+                    {errors.password2}
+                  </p>
+                )}
+              </div>
+              {/* <div className="relative mb-5">
+              <i className="absolute top-1/2 left-1 -translate-y-1/2 pi pi-lock p-3 bg-blue50"></i>
+              <input
+                type="password"
+                className="pl-12 p-3 px-4 border rounded "
+                placeholder="Password"
+              />
+            </div>
+            <div className="relative mb-5">
+              <i className="absolute top-1/2 left-1 -translate-y-1/2 pi pi-lock p-3 bg-blue50"></i>
+              <input
+                type="password"
+                className="pl-12 p-3 px-4 border rounded "
+                placeholder="Password2"
+              />
+            </div> */}
               <div>
                 {/* <input type="submit" onClick={()=>navigate('/dashboard')} value="Login" className=' text-white bg-[#4A3AFF] rounded py-2 text-center w-full block' /> */}
-                <button
+                <div
                   onClick={handleSubmit}
                   className=" text-white bg-[#4A3AFF] rounded py-2 text-center w-full block cursor-pointer"
                 >
-                  Login
-                </button>
-              </div>
-              <div>
-                <p
-                  className="text-center my-3 text-xs font-bold w-full text-[#4A3AFF] "
-                  onClick={() => navigate("/forgot-password")}
-                >
-                  Forgot Password
-                </p>
+                  Change password
+                </div>
               </div>
             </form>
           </div>

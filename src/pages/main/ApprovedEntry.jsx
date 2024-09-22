@@ -4,6 +4,7 @@ import { Column } from 'primereact/column';
 
 import AllData from '../../utils/data/entries.json'
 import { useNavigate } from 'react-router-dom';
+import { getApprovedData } from '../../utils/api/data';
 
 export default function ApprovedEntry() {
     const [entries, setEntries] = useState([]);
@@ -12,28 +13,39 @@ export default function ApprovedEntry() {
     const [rowClick, setRowClick] = useState(true);
 
     const navigate = useNavigate()
-
+    
     const columns = [
         { field: 'user', header: 'User' },
-        { field: 'church', header: 'Church' },
-        { field: 'founder', header: 'Founder' },
+        { field: 'nameOfChurch', header: 'Church' },
+        { field: 'nameOfGO', header: 'Founder' },
         { field: 'denomination', header: 'Denomination' },
         { field: 'status', header: 'Status' }
     ];
 
-    const getData = (Details) => {
-        const allData = Details.map((data, index) => ({
-            ...data,
-            id: index + 1
-        }));
-        const approvedEntries = allData.filter(entry => entry.status === 'Approved');
+    const getData = async () => {
+        // const allData = AllData.map((data, index) => ({
+        //     ...data,
+        //     id: index + 1
+        // }));
+        // const approvedEntries = allData.filter(entry => entry.status === 'Approved');
 
-        setEntries(approvedEntries);
+        await getApprovedData().then((res)=>{
+            console.log(res, 'response');
+            console.log(res.data.payload);
+            const allData = res.data.payload.map((data, index) => ({
+                ...data,
+                id: index + 1
+            }));
+            
+            setEntries(allData);
+        })
+        // setEntries(allData);
+        
     };
 
 
     useEffect(() => {
-        getData(AllData)
+        getData()
     }, []);
     const statusBodyTemplate = (rowData) => {
         return (

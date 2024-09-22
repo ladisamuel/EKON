@@ -5,10 +5,12 @@ import { authState } from "../../utils/atoms/authAtom";
 export default function DefaultLayout() {
   const auth = useRecoilValue(authState);
 
+  console.log('from default layout', auth);
+
   return (
     <div>
-      {auth?.access ? (
-        <Navigate to="/dashboard" />
+      {auth?.token ? (
+        <Navigate to="/Dashboard" />
       ) : (
         <Outlet />
       )}

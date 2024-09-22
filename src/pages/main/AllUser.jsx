@@ -4,9 +4,9 @@ import { Column } from 'primereact/column';
 
 import AllData from '../../utils/data/entries.json'
 import { useNavigate } from 'react-router-dom';
-import { getAllData } from '../../utils/api/data';
+import { getAllUsers } from '../../utils/api/user';
 
-export default function AllEntry() {
+export default function AllUser() {
     const [entries, setEntries] = useState([]);
 
     const [selectedEntries, setSelectedEntries] = useState(null);
@@ -15,17 +15,17 @@ export default function AllEntry() {
     const navigate = useNavigate()
 
     const columns = [
-        { field: 'user', header: 'User' },
-        { field: 'nameOfChurch', header: 'Church' },
-        { field: 'nameOfGO', header: 'Founder' },
-        { field: 'denomination', header: 'Denomination' },
-        { field: 'status', header: 'Status' }
+        { field: 'fullName', header: 'Name' },
+        { field: 'email', header: 'Email' },
+        { field: 'phone', header: 'Phone number' },
+        { field: 'role', header: 'Role' },
     ];
 
     const getData = async () => {
+        console.log('Helo');
         
-        await getAllData().then((res)=>{
-            console.log(res, 'all data');
+        await getAllUsers().then((res)=>{
+            console.log(res, 'all Users');
             console.log(res.data.payload);
             const allData = res.data.payload.map((data, index) => ({
                 ...data,
@@ -56,14 +56,14 @@ export default function AllEntry() {
 
             <div className="mb-10 flex lg:flex-row items-start justify-between gap-5">
                 <div className="lg:flex">
-                    <p className="font-bold">My Data Entry</p>
-                    <p className='text-xs lg:ml-5 w-fit px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>All Entries</p>
+                    <p className="font-bold">All Users</p>
+                    <p className='text-xs lg:ml-5 w-fit px-2 py-1 bg-[#F7FAFF] rounded-xl text-[#4A3AFF]'>Users</p>
                 </div>
                 <div className="flex flex-col-reverse lg:flex-row items-center">
                     <p className='mx-5'>Filters</p>
-                    <div onClick={()=>navigate('/AddNewOne')} className='flex items-center gap-3 text-xs px-2 py-2 bg-[#4A3AFF] rounded-lg text-white cursor-pointer'>
+                    <div onClick={()=>navigate('/user/addnewuser')} className='flex items-center gap-3 text-xs px-2 py-2 bg-[#4A3AFF] rounded-lg text-white cursor-pointer'>
                         <i className='pi pi-plus'></i>
-                        <p className=''>Add New Entry</p>
+                        <p className=''>Add New User</p>
                     </div>
 
                 </div>

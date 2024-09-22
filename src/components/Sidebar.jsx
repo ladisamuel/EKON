@@ -13,32 +13,66 @@ import Logo2 from '../assets/Logo2.png'
 
 export default function Sidebar() {
 const [entryStatus, setEntryStatus] = useState(false)
+const [userStatus, setUserStatus] = useState(false)
     const navigate = useNavigate()
 
     const toggleEntryStatus = () =>{
         setEntryStatus(!entryStatus)
     }
 
+    const toggleUserStatus = () =>{
+        setUserStatus(!userStatus)
+    }
+
     const menuList = [
         {
             text: "Analytics",
-            img: analytics
+            img: analytics,
+            link: "/#",
+            sub: []
         },
         {
             text: "Approvals",
-            img: approvals
+            img: approvals,
+            link: "/#",
+            sub: []
         },
         {
             text: "Users",
-            img: users
+            img: users,
+            link: "/user/alluser",
+            sub: [
+                {
+                    text: 'All Users', 
+                    link: '/user/alluser'
+                },
+                {
+                    text: 'Admin', 
+                    link: '/user/admin'
+                },
+                {
+                    text: 'Super Admin', 
+                    link: '/user/super admin'
+                },
+                {
+                    text: 'Add Users', 
+                    link: '/user/addnewuser'
+                },
+
+            ]
+
         },
         {
             text: "Forum",
-            img: forum
+            img: forum,
+            link: "/#",
+            sub: []
         },
         {
             text: "My Profile",
-            img: myProfile
+            img: myProfile,
+            link: "/#",
+            sub: []
         },
     ]
     return (
@@ -84,12 +118,23 @@ const [entryStatus, setEntryStatus] = useState(false)
                 <div className='flex flex-col gap-3 text-gray-700'>
                     {
                         menuList.map((menu, index) => (
-                            <div key={index} className='flex gap-2 items-center justify-start'>
-                                <img src={menu.img} className=" w-[15px] text-md" />
-                                <p className='py-1'>{menu.text}</p>
-                            </div>
+                            <div key={index}  onClick={toggleUserStatus} className=''>
+                                <div className=''>
+                                    <div className="flex cursor-pointer gap-2 items-center justify-start hover:cursor-pointer hover:bg-[#F4F4F4] hover:border-l-4 border-black ">
+                                    <img src={menu.img} className=" w-[15px] text-md" />
+                                    <p className='py-1 '>{menu.text}</p>
+                                    </div>
+                                    <ul className={` pl-10 flex flex-col gap-3 mt-2 `}>
+                                        {menu.sub.map((item, index)=>(
+                                            <li key={index} className={`${userStatus? 'block': 'hidden'} text-sm cursor-pointer`} onClick={()=>navigate(item.link)}>{item.text}</li>
+
+                                        ))}
+                                    </ul>
+                                    </div>
+                                </div>
                         ))
                     }
+                                
                 </div>
                 <div className="hidden lg:absolute bottom-10">
                     <img src={Logo2} className="" alt="" />

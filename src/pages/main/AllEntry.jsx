@@ -5,6 +5,7 @@ import { Column } from 'primereact/column';
 import AllData from '../../utils/data/entries.json'
 import { useNavigate } from 'react-router-dom';
 import { getAllData } from '../../utils/api/data';
+import { Button } from 'primereact/button';
 
 export default function AllEntry() {
     const [entries, setEntries] = useState([]);
@@ -15,12 +16,28 @@ export default function AllEntry() {
     const navigate = useNavigate()
 
     const columns = [
-        { field: 'user', header: 'User' },
-        { field: 'nameOfChurch', header: 'Church' },
-        { field: 'nameOfGO', header: 'Founder' },
-        { field: 'denomination', header: 'Denomination' },
-        { field: 'status', header: 'Status' }
+        {field: 'userName', header: 'User' },
+        {field: 'nameOfChurch', header: 'Church' },
+        {field: 'nameOfGO', header: 'Founder' },
+        {field: 'denomination', header: 'Denomination' },
+        {field: 'status', header: 'Status' }
     ];
+
+
+    const goToDetailsPage = (rowData) => {
+        navigate(`/Entries/single/${rowData.link}`);
+    };
+
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <Button
+                label="View" 
+                icon="pi pi-external-link text-[10px]" 
+                className='bg-gray-50 border-none text-[10px] px-3 py-2'
+                onClick={() => goToDetailsPage(rowData)} 
+            />
+        );
+    };
 
     const getData = async () => {
         
@@ -29,8 +46,10 @@ export default function AllEntry() {
             console.log(res.data.payload);
             const allData = res.data.payload.map((data, index) => ({
                 ...data,
-                id: index + 1
+                link: data._id,
+                id: index + 1 
             }));
+            console.log(allData)
             
             setEntries(allData);
         })
@@ -85,7 +104,7 @@ export default function AllEntry() {
                         sortMode="multiple"
                         tableStyle={{ minWidth: '30rem' }}
                     >
-                        <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
+                        <Column selectionMode="multiple" className="border-b" headerStyle={{ width: '3rem' }}></Column>
 
                         {columns.map((col, i) => (
                             <Column
@@ -96,6 +115,8 @@ export default function AllEntry() {
                                 header={col.header}
                             />
                         ))}
+                        <Column body={actionBodyTemplate} className='border-b' header="Actions" />
+
                     </DataTable>
                 </div>
             </div>

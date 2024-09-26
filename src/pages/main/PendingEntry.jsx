@@ -4,6 +4,7 @@ import { Column } from 'primereact/column';
 
 import AllData from '../../utils/data/entries.json'
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'primereact/button';
 
 export default function PendingEntry() {
     const [entries, setEntries] = useState([]);
@@ -20,6 +21,24 @@ export default function PendingEntry() {
         { field: 'denomination', header: 'Denomination' },
         { field: 'status', header: 'Status' }
     ];
+
+    
+
+    const goToDetailsPage = (rowData) => {
+        navigate(`/Entries/single/${rowData.id}`);
+    };
+
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <Button
+                label="View" 
+                icon="pi pi-external-link text-[10px]" 
+                className='bg-gray-50 border-none text-[10px] px-3 py-2'
+                onClick={() => goToDetailsPage(rowData)} 
+                // onClick={()=>console.log(rowData)} 
+            />
+        );
+    };
 
     const getData = (Details) => {
         const allData = Details.map((data, index) => ({
@@ -90,6 +109,7 @@ export default function PendingEntry() {
                                 header={col.header}
                             />
                         ))}
+                        <Column body={actionBodyTemplate} className='border-b' header="Actions" />
                     </DataTable>
                 </div>
             </div>

@@ -13,11 +13,14 @@ const addData = async (payload) => {
     return await axios.post(`${baseUrl}`, payload);
   };
 
-
-const getSingleData = async () => {
-return await axios.get(`${baseUrl}`, );
+const getSingleData = async (id) => {
+return await axios.get(`${baseUrl}/${id}`);
 };
 
+const editSingleData = async (payload) => {
+return await axios.get(`${baseUrl}`, payload);
+};
+    
 
 const getApprovedData = async () => {
 return await axios.get(`${baseUrl}/approved`, );
@@ -33,5 +36,6 @@ export {
     getSingleData,
     getApprovedData,
     getPendingData,
-    addData
+    addData,
+    editSingleData
 }

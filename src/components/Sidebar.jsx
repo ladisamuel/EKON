@@ -13,15 +13,20 @@ import Logo2 from '../assets/Logo2.png'
 
 export default function Sidebar() {
 const [entryStatus, setEntryStatus] = useState(false)
-const [userStatus, setUserStatus] = useState(false)
+const [userStatus, setUserStatus] = useState(null)
     const navigate = useNavigate()
 
     const toggleEntryStatus = () =>{
         setEntryStatus(!entryStatus)
     }
 
-    const toggleUserStatus = () =>{
-        setUserStatus(!userStatus)
+    const toggleUserStatus = (text) =>{
+        if (userStatus===text){
+            setUserStatus(null)
+            
+        } else {
+            setUserStatus(text)
+        }
     }
 
     const menuList = [
@@ -118,7 +123,7 @@ const [userStatus, setUserStatus] = useState(false)
                 <div className='flex flex-col gap-3 text-gray-700'>
                     {
                         menuList.map((menu, index) => (
-                            <div key={index}  onClick={toggleUserStatus} className=''>
+                            <div key={index}  onClick={() => toggleUserStatus(menu.text)} className=''>
                                 <div className=''>
                                     <div className="flex cursor-pointer gap-2 items-center justify-start hover:cursor-pointer hover:bg-[#F4F4F4] hover:border-l-4 border-black ">
                                     <img src={menu.img} className=" w-[15px] text-md" />
@@ -126,7 +131,7 @@ const [userStatus, setUserStatus] = useState(false)
                                     </div>
                                     <ul className={` pl-10 flex flex-col gap-3 mt-2 `}>
                                         {menu.sub.map((item, index)=>(
-                                            <li key={index} className={`${userStatus? 'block': 'hidden'} text-sm cursor-pointer`} onClick={()=>navigate(item.link)}>{item.text}</li>
+                                            <li key={index} className={`${userStatus===menu.text? 'block': 'hidden'} text-sm cursor-pointer`} onClick={()=>navigate(item.link)}>{item.text}</li>
 
                                         ))}
                                     </ul>

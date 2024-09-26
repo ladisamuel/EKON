@@ -22,9 +22,9 @@ export default function Main() {
                             <Topbar />
                             <div className="lg:hidden">
                                 {displaySide ?
-                                    <i onClick={handleSideBar} className="absolute top-1/2 -translate-y-1/2 right-5 text-black text-2xl pi pi-times "></i>
+                                    <i onClick={handleSideBar} className="absolute top-1/2 -translate-y-1/2 right-5 text-black text-lg pi pi-times "></i>
                                     :
-                                    <i onClick={handleSideBar} className="absolute top-1/2 -translate-y-1/2 right-5 text-black text-4xl pi pi-bars "></i>
+                                    <i onClick={handleSideBar} className="absolute top-1/2 -translate-y-1/2 right-5 text-black text-lg pi pi-bars "></i>
                                 }
                             </div>
 

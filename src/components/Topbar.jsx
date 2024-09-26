@@ -63,8 +63,6 @@ export default function Topbar() {
 
                     </div>
 
-                    {/* logos */}
-
                     <div className=' flex place-items-center gap-x-5 w-full'>
                         <i className='pi pi-sun text-sm'></i>
                         <i className='pi pi-history text-sm'></i>

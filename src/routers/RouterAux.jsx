@@ -15,6 +15,7 @@ import AddUser from "../pages/main/AddUser";
 import AllUser from "../pages/main/AllUser";
 import AdminUser from "../pages/main/AdminUser";
 import SuperAdminUser from "../pages/main/SuperAdminUser";
+import DataPage from "../pages/main/DataPage";
 
 
 const RouterAux = createBrowserRouter([
@@ -70,6 +71,10 @@ const RouterAux = createBrowserRouter([
         {
           path: "/Entries/PendingEntries",
           element: <PendingEntry />,
+        },
+        {
+          path: "/Entries/single/:id",
+          element: <DataPage />,
         },
         {
           path: "/user/alluser",

@@ -15,7 +15,7 @@ export default function ApprovedEntry() {
     const navigate = useNavigate()
     
     const columns = [
-        { field: 'user', header: 'User' },
+        { field: 'userName', header: 'User' },
         { field: 'nameOfChurch', header: 'Church' },
         { field: 'nameOfGO', header: 'Founder' },
         { field: 'denomination', header: 'Denomination' },
@@ -42,6 +42,25 @@ export default function ApprovedEntry() {
         // setEntries(allData);
         
     };
+
+    
+
+    const goToDetailsPage = (rowData) => {
+        navigate(`/Entries/single/${rowData.id}`);
+    };
+
+    const actionBodyTemplate = (rowData) => {
+        return (
+            <Button
+                label="View" 
+                icon="pi pi-external-link text-[10px]" 
+                className='bg-gray-50 border-none text-[10px] px-3 py-2'
+                onClick={() => goToDetailsPage(rowData)} 
+                // onClick={()=>console.log(rowData)} 
+            />
+        );
+    };
+
 
 
     useEffect(() => {
@@ -102,7 +121,8 @@ export default function ApprovedEntry() {
                                 header={col.header}
                             />
                         ))}
-                    </DataTable>
+                        <Column body={actionBodyTemplate} className='border-b' header="Actions" />
+                        </DataTable>
                 </div>
             </div>
         </div>

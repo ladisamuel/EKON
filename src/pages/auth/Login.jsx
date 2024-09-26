@@ -36,7 +36,11 @@ export default function Login() {
 
           setAuth(res.data.payload);
           setUser(res.data.payload);
-          navigate('/Dashboard')
+          if (res.data.payload.role.toLowerCase() === 'admin') {
+            navigate('/Dashboard')
+          } else if (res.data.payload.role.toUpperCase() === 'super admin') {
+            navigate('/adminDashboard')
+          }
           toast.success(" Login successful");
         })
       .catch((err) => {

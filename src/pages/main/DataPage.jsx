@@ -5,15 +5,20 @@ import { InputText } from "primereact/inputtext";
 import { Dropdown } from "primereact/dropdown";
 import { useFormik } from "formik";
 import { getSingleData } from "../../utils/api/data";
+import { Checkbox } from "primereact/checkbox";
+import { useRecoilValue } from "recoil";
+import { userState } from "../../utils/atoms/userAtom";
 
 export default function DataPage() {
+  const user = useRecoilValue(userState)
   const navigate = useNavigate();
   const id = useParams();
 
-  const [data, setData] = useState({});
+  const [checked, setChecked] = useState(false);
+
   const [selectedDenomination, setSelectedDenomination] = useState(null);
   const [edit, setEdit] = useState(false);
-
+  const [initialValues, setInitialValues] = useState({});
   const denomination = [
     { name: "Catholic", code: "Catholic" },
     { name: "Pentecostal", code: "Pentecostal" },
@@ -25,32 +30,25 @@ export default function DataPage() {
   const getData = async () => {
     
     await getSingleData(id.id).then((res) => {
-      setData(res.data.payload);
-      console.log(res.data.payload);
-      
+      setChecked(res.data.payload.isApproved)
+      setInitialValues(res.data.payload)
     });
+
+
+    
   };
 
   const onSubmit = async (values) => {
     const data = {
-      ...dataEntry,
-      continent: values.continent,
-      country: values.country,
-      state: values.state,
-      city: values.city,
-      street: values.street,
-      postalCode: values.postalCode,
+      ...values,
+      isApproved: checked,
+      id: id.id     // id from useParams
     };
-    console.log(data);
-
-    console.log(values);
+    console.log(data); // to check data before submitting
 
     await addData(data)
       .then((res) => {
-        console.log(res);
         toast.success("Data edited successfully");
-        setDataEntryValue("");
-        console.log("Edit data Completed");
         navigate(`/Entries/single/${id}`);
       })
       .catch((err) => {
@@ -58,22 +56,7 @@ export default function DataPage() {
       });
   };
 
-  const initialValues = {
-    nameOfGO: data.nameOfGO,
-    nameOfChurch: data.nameOfChurch,
-    yearOfEstablishment: data.yearOfEstablishment,
-    churchURL: data.churchURL,
-    socialMediaPage: data.socialMediaPage,
-
-    continent: data.continent,
-    country: data.country,
-    state: data.state,
-    city: data.city,
-    street: data.street,
-    postalCode: data.postalCode,
-    isApproved: data.isApproved,
-  };
-
+  
   const {
     values,
     errors,
@@ -91,7 +74,9 @@ export default function DataPage() {
 
   useEffect(() => {
     getData();
-  }, []);
+    
+      console.log(initialValues, 'initial values'); // 
+    }, []);
 
   return (
     <>
@@ -157,7 +142,7 @@ export default function DataPage() {
                     className={`w-full  p-2 rounded shadow !bg-white ${edit? '':'cursor-not-allowed'}`}
                     id="yearOfEstablishment"
                     name="yearOfEstablishment"
-                    placeholder="Year Founded"
+                    placeholder={values.yearOfEstablishment}
                     value={values.yearOfEstablishment}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -354,6 +339,17 @@ export default function DataPage() {
               )}
             </div>
 
+            <div className="">
+              
+        <div className="card flex items-center gap-10 my-5 justify-content-center">
+          
+          Approved
+            <Checkbox disabled={!edit} className="border" onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
+        </div>
+            </div>
+
+            {user.role.toLowerCase() === 'super admin' ?
+            (
             <div className="flex gap-1">
               {edit ? (
                 <button
@@ -371,6 +367,8 @@ export default function DataPage() {
                 </p>
               )}
             </div>
+            )
+             : ('')}
             {/* </form> */}
           </form>
         </div>

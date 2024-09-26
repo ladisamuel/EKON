@@ -10,10 +10,14 @@ import users from '../assets/icons/sidebar/users.png'
 import { useNavigate } from 'react-router-dom'
 
 import Logo2 from '../assets/Logo2.png'
+import { useRecoilValue } from 'recoil'
+import { userState } from '../utils/atoms/userAtom'
 
 export default function Sidebar() {
 const [entryStatus, setEntryStatus] = useState(false)
-const [userStatus, setUserStatus] = useState(null)
+const [menuItem, setMenuItem] = useState(null)
+const user = useRecoilValue(userState)
+
     const navigate = useNavigate()
 
     const toggleEntryStatus = () =>{
@@ -21,11 +25,11 @@ const [userStatus, setUserStatus] = useState(null)
     }
 
     const toggleUserStatus = (text) =>{
-        if (userStatus===text){
-            setUserStatus(null)
+        if (menuItem===text){
+            setMenuItem(null)
             
         } else {
-            setUserStatus(text)
+            setMenuItem(text)
         }
     }
 
@@ -77,7 +81,12 @@ const [userStatus, setUserStatus] = useState(null)
             text: "My Profile",
             img: myProfile,
             link: "/#",
-            sub: []
+            sub: [
+                {
+                    text: 'Sign Out', 
+                    link: '/'
+                },
+            ]
         },
     ]
     return (
@@ -123,7 +132,7 @@ const [userStatus, setUserStatus] = useState(null)
                 <div className='flex flex-col gap-3 text-gray-700'>
                     {
                         menuList.map((menu, index) => (
-                            <div key={index}  onClick={() => toggleUserStatus(menu.text)} className=''>
+                            <div key={index}  onClick={() => toggleUserStatus(menu.text)} className={` ${menu.text === 'Users' && user?.role.toLowerCase() === 'admin' ? 'hidden' : '' }`}>
                                 <div className=''>
                                     <div className="flex cursor-pointer gap-2 items-center justify-start hover:cursor-pointer hover:bg-[#F4F4F4] hover:border-l-4 border-black ">
                                     <img src={menu.img} className=" w-[15px] text-md" />
@@ -131,12 +140,13 @@ const [userStatus, setUserStatus] = useState(null)
                                     </div>
                                     <ul className={` pl-10 flex flex-col gap-3 mt-2 `}>
                                         {menu.sub.map((item, index)=>(
-                                            <li key={index} className={`${userStatus===menu.text? 'block': 'hidden'} text-sm cursor-pointer`} onClick={()=>navigate(item.link)}>{item.text}</li>
+                                            <li key={index} className={`${menuItem===menu.text? 'block': 'hidden'} text-sm cursor-pointer`} onClick={()=>navigate(item.link)}>{item.text}</li>
 
                                         ))}
                                     </ul>
                                     </div>
                                 </div>
+                            
                         ))
                     }
                                 

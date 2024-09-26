@@ -7,10 +7,18 @@ import search from '../assets/icons/Search.png'
 import text from '../assets/icons/Text.png'
 import star from '../assets/icons/star.png'
 import LogoBlk from '../assets/Logo2.png'
+import { userState } from '../utils/atoms/userAtom'
+import { authState } from '../utils/atoms/authAtom'
+import { useRecoilState } from 'recoil'
+import { useNavigate } from 'react-router-dom'
 
 export default function Topbar() {
-
+    const [user, setUser] = useRecoilState(userState)
+    const [auth, setAuth] = useRecoilState(authState)
     const [path, setPath] = useState('')
+
+    const navigate = useNavigate()
+
     const breadcrumbs = () => {
 
         const currentPath = window.location.pathname;
@@ -25,6 +33,13 @@ export default function Topbar() {
 
         return pathSegments.map(segment => formatSegment(segment)).join(' / ');
 
+    }
+
+    const logout = () => {
+        setUser({})
+        setAuth({})
+        navigate('/')
+        
     }
 
     // console.log(breadcrumbs());
@@ -67,7 +82,7 @@ export default function Topbar() {
                         <i className='pi pi-sun text-sm'></i>
                         <i className='pi pi-history text-sm'></i>
                         <i className='pi pi-bell text-sm'></i>
-                        <i className='pi pi-folder text-sm'></i>
+                        <i className='pi pi-sign-out text-sm text-red-400 bg-gray-50 p-2 cursor-pointer rounded' onClick={logout}></i>
 
                     </div>
 

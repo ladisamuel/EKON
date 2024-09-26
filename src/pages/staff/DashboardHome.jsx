@@ -1,6 +1,9 @@
 import React from 'react'
 import staffdashboardimg from '../../assets/staffHome.png'
+import { useNavigate } from 'react-router-dom'
 export default function DashboardHome() {
+
+    const navigate = useNavigate()
     return (
         <div>
             <div className="px-10">

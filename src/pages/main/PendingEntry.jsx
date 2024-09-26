@@ -5,6 +5,7 @@ import { Column } from 'primereact/column';
 import AllData from '../../utils/data/entries.json'
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
+import { getPendingData } from '../../utils/api/data';
 
 export default function PendingEntry() {
     const [entries, setEntries] = useState([]);
@@ -15,17 +16,16 @@ export default function PendingEntry() {
     const navigate = useNavigate()
 
     const columns = [
-        { field: 'user', header: 'User' },
-        { field: 'church', header: 'Church' },
-        { field: 'founder', header: 'Founder' },
+        { field: 'userName', header: 'User' },
+        { field: 'nameOfChurch', header: 'Church' },
+        { field: 'nameOfGO', header: 'Founder' },
         { field: 'denomination', header: 'Denomination' },
         { field: 'status', header: 'Status' }
     ];
-
     
 
     const goToDetailsPage = (rowData) => {
-        navigate(`/Entries/single/${rowData.id}`);
+        navigate(`/Entries/single/${rowData.link}`);
     };
 
     const actionBodyTemplate = (rowData) => {
@@ -40,19 +40,25 @@ export default function PendingEntry() {
         );
     };
 
-    const getData = (Details) => {
-        const allData = Details.map((data, index) => ({
-            ...data,
-            id: index + 1 
-        }));
-        const approvedEntries = allData.filter(entry => entry.status === 'Pending');
-
-        setEntries(approvedEntries);
+    const getData = async () => {
+        
+        
+        await getPendingData().then((res)=>{
+            console.log(res, 'response');
+            console.log(res.data.payload);
+            const allData = res.data.payload.map((data, index) => ({
+                ...data,
+                link: data._id,
+                id: index + 1
+            }));
+            
+            setEntries(allData);
+        })
     };
 
     
     useEffect(() => {
-        getData(AllData)
+        getData()
     }, []);
     const statusBodyTemplate = (rowData) => {
         return (

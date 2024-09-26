@@ -4,19 +4,20 @@ import { useRecoilValue } from "recoil";
 import Sidebar from "../../components/Sidebar";
 import Topbar from "../../components/Topbar";
 import { useState } from "react";
+import { userState } from "../../utils/atoms/userAtom";
 
-export default function LoggedInLayout() {
+export default function UserPageLayout() {
   const auth = useRecoilValue(authState);
+  const user = useRecoilValue(userState);
 
   const [displaySide, setDisplaySide] = useState(false)
-  console.log(auth, 'kjbhi authhh');
 
   const handleSideBar = () => {
       setDisplaySide(!displaySide)
   }
   return (
     <div>
-      {auth?.token ?(
+      {auth?.token && user?.role.toLowerCase() === 'super admin' ?(
         
         <div className=''>
 

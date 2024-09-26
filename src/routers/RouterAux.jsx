@@ -16,6 +16,8 @@ import AllUser from "../pages/main/AllUser";
 import AdminUser from "../pages/main/AdminUser";
 import SuperAdminUser from "../pages/main/SuperAdminUser";
 import DataPage from "../pages/main/DataPage";
+import DashboardHome from "../pages/staff/DashboardHome";
+import UserPageLayout from "./layout/UserPageLayout";
 
 
 const RouterAux = createBrowserRouter([
@@ -50,8 +52,12 @@ const RouterAux = createBrowserRouter([
       children: [
         {
           path: "/Dashboard",
+          element: <DashboardHome />,
+        }, 
+        {
+          path: "/adminDashboard",
           element: <Dashboard />,
-        },
+        }, 
         {
           path: "/AddNewOne",
           element: <DataEntryOne />,
@@ -76,6 +82,14 @@ const RouterAux = createBrowserRouter([
           path: "/Entries/single/:id",
           element: <DataPage />,
         },
+        
+      ],
+    },
+    
+    {
+      path: "/",
+      element: <UserPageLayout />,
+      children: [
         {
           path: "/user/alluser",
           element: <AllUser />,
@@ -92,9 +106,8 @@ const RouterAux = createBrowserRouter([
           path: "/user/addnewuser",
           element: <AddUser />,
         },
-        
-      ],
-    },
+      ]
+    }
   ]);
   
   export default RouterAux;

@@ -23,12 +23,12 @@ return await axios.get(`${baseUrl}`, payload);
     
 
 const getApprovedData = async () => {
-return await axios.get(`${baseUrl}/approved`, );
+return await axios.get(`${baseUrl}/status/approved`, );
 };
 
 
 const getPendingData = async () => {
-return await axios.get(`${baseUrl}/pending`, );
+return await axios.get(`${baseUrl}/status/pending`, );
 }; 
 
 export {
